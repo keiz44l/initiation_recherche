@@ -19,7 +19,7 @@ def main():
 
     # Plot the data
     fig, ax = plt.subplots()
-    ax.set_title("Quality based on number of evaluations for Borg Adaptative algorithm on separable functions")
+    ax.set_title("Quality based on number of evaluations for RM-MEDA algorithm on separable functions")
     ax.set_xlabel("Number of evaluations")
     ax.set_ylabel("Quality")
     ax.set_xscale("log")
@@ -42,19 +42,12 @@ def main():
 
     # Plot the median
     fig, ax = plt.subplots()
-    ax.set_title("Median quality based on number of evaluations for Borg Adaptative algorithm on separable functions")
+    ax.set_title("Median quality based on number of evaluations for RM-MEDA algorithm on separable functions")
     ax.set_xlabel("Number of evaluations")
     ax.set_ylabel("Quality")
     ax.set_xscale("log")
     ax.set_yscale("log")
     ax.plot(list(median.keys()), list(median.values()))
-    plt.show()
-
-    myList = instances[0].items()
-    myList = sorted(myList)
-    x, y = zip(*myList)
-
-    plt.plot(x, y)
     plt.show()
 
 if __name__ == "__main__":
