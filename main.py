@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from statsmodels.distributions.empirical_distribution import ECDF
 import numpy as np
 
 def main():
@@ -29,25 +30,69 @@ def main():
     ax.legend()
     plt.show()
 
+    # convert to numpy
+    for i, instance in enumerate(instances):
+        instances[i] = np.array(list(instance.items()))
+
     # Do the median
     median = {}
     for instance in instances:
-        for key, value in instance.items():
-            if key in median:
-                median[key].append(value)
-            else:
-                median[key] = [value]
-    for key, value in median.items():
-        median[key] = np.median(value)
+        for x, y in instance:
+            if x not in median:
+                median[x] = []
+            median[x].append(y)
+    for x in median:
+        median[x] = np.median(median[x])
+
+    # Ecart type
+    std = {}
+    for instance in instances:
+        for x, y in instance:
+            if x not in std:
+                std[x] = []
+            std[x].append(y)
+    for x in std:
+        std[x] = np.std(std[x])
+
+    # ECDF
+    sample = np.hstack(instances)
+    ecdf = ECDF(sample[:, 1])
+
 
     # Plot the median
     fig, ax = plt.subplots()
-    ax.set_title("Median quality based on number of evaluations for RM-MEDA algorithm on separable functions")
+    ax.set_title("Quality based on number of evaluations for Borg Adaptative algorithm on separable functions")
     ax.set_xlabel("Number of evaluations")
     ax.set_ylabel("Quality")
     ax.set_xscale("log")
     ax.set_yscale("log")
-    ax.plot(list(median.keys()), list(median.values()))
+    ax.plot(list(median.keys()), list(median.values()), label="Median")
+    plt.show()
+
+    # Plot the standard deviation
+    fig, ax = plt.subplots()
+    ax.set_title("Quality based on number of evaluations for Borg Adaptative algorithm on separable functions")
+    ax.set_xlabel("Number of evaluations")
+    ax.set_ylabel("Quality")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.plot(list(std.keys()), list(std.values()), label="Standard deviation")
+    plt.show()
+
+    # Plot the ECDF
+    fig, ax = plt.subplots()
+    ax.set_title("Quality based on number of evaluations for Borg Adaptative algorithm on separable functions")
+    ax.set_xlabel("Number of evaluations")
+    ax.set_ylabel("Quality")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.plot(ecdf.x, ecdf.y, label="ECDF")
+    plt.show()
+
+
+
+
+    plt.plot(x, y)
     plt.show()
 
 if __name__ == "__main__":
