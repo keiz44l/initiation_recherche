@@ -6,7 +6,7 @@ def main():
     instances = []
     instance = {}
     # Read the data
-    with open("bbob-biobj_f01_d02_hyp.tdat", "r", encoding="utf-8") as file:
+    with open("./RM-MEDA_Auger_bbob-biobj/d02_d03_d10/1-separable_1-separable/bbob-biobj_f01_d02_hyp.tdat", "r") as file:
         for line in file:
             if line[0] == "%" and instance:
                 instances.append(instance)
@@ -92,6 +92,8 @@ def main():
 
 
 
+    plt.plot(x, y)
+    plt.show()
 
 if __name__ == "__main__":
     main()
