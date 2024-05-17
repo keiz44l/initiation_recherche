@@ -6,7 +6,7 @@ def main():
     instances = []
     instance = {}
     # Read the data
-    with open("./bbob-biobj_f01_d02_hyp.tdat", "r") as file:
+    with open("./RM-MEDA_Auger_bbob-biobj/d02_d03_d10/1-separable_1-separable/bbob-biobj_f01_d02_hyp.tdat", "r") as file:
         for line in file:
             if line[0] == "%" and instance:
                 instances.append(instance)
@@ -17,21 +17,23 @@ def main():
             instance[int(line[0])] = float(line[1])
         instances.append(instance)
 
-    #show_instances(instances)
-    """
-    instances = to_numpy(instances)
-    my_median = median(instances)
-    show_median(my_median)"""
 
+    # Plot the data
+    fig, ax = plt.subplots()
+    ax.set_title("Quality based on number of evaluations for RM-MEDA algorithm on separable functions")
+    ax.set_xlabel("Number of evaluations")
+    ax.set_ylabel("Quality")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    for i, instance in enumerate(instances):
+        ax.plot(list(instance.keys()), list(instance.values()), label=f"Instance {i+1}")
+    ax.legend()
+    plt.show()
 
-def to_numpy(instances):
     # convert to numpy
     for i, instance in enumerate(instances):
         instances[i] = np.array(list(instance.items()))
 
-    return instances
-
-def median(instances):
     # Do the median
     median = {}
     for instance in instances:
@@ -41,9 +43,7 @@ def median(instances):
             median[x].append(y)
     for x in median:
         median[x] = np.median(median[x])
-    return median
 
-def standardized(instances):
     # Ecart type
     std = {}
     for instance in instances:
@@ -54,43 +54,14 @@ def standardized(instances):
     for x in std:
         std[x] = np.std(std[x])
 
-    return std
-
-def ecdf(instances):
     # ECDF
     sample = np.hstack(instances)
     ecdf = ECDF(sample[:, 1])
-    return ecdf
 
-def show_standardized(std):
-    # Plot the standard deviation
-    fig, ax = plt.subplots()
-    ax.set_title("Quality based on number of evaluations for Borg Adaptative algorithm on separable functions")
-    ax.set_xlabel("Number of evaluations")
-    ax.set_ylabel("Quality")
-    ax.set_xscale("log")
-    ax.set_yscale("log")
-    ax.plot(list(std.keys()), list(std.values()), label="Standard deviation")
-    plt.show()
 
-def show_instances(instances):
-    # Plot the data
+    # Plot the median
     fig, ax = plt.subplots()
-    ax.set_title("Quality based on number of evaluations for Borg Adaptative algorithm on separable functions")
-    ax.set_xlabel("Number of evaluations")
-    ax.set_ylabel("Quality")
-    ax.set_xscale("log")
-    ax.set_yscale("log")
-    for i, instance in enumerate(instances):
-        ax.plot(list(instance.keys()), list(instance.values()), label=f"Instance {i+1}")
-    ax.plot()
-    ax.legend()
-    plt.show()
-
-def show_median(median):
-    # Plot the medians
-    fig, ax = plt.subplots()
-    ax.set_title("Quality based on number of evaluations for Borg Adaptative algorithm on separable functions")
+    ax.set_title("Quality based on number of evaluations for RM-MEDA algorithm on separable functions")
     ax.set_xlabel("Number of evaluations")
     ax.set_ylabel("Quality")
     ax.set_xscale("log")
@@ -98,16 +69,26 @@ def show_median(median):
     ax.plot(list(median.keys()), list(median.values()), label="Median")
     plt.show()
 
-def show_ecdf(ecdf):
+    # Plot the standard deviation
+    fig, ax = plt.subplots()
+    ax.set_title("Quality based on number of evaluations for RM-MEDA algorithm on separable functions")
+    ax.set_xlabel("Number of evaluations")
+    ax.set_ylabel("Quality")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.plot(list(std.keys()), list(std.values()), label="Standard deviation")
+    plt.show()
+
     # Plot the ECDF
     fig, ax = plt.subplots()
-    ax.set_title("Quality based on number of evaluations for Borg Adaptative algorithm on separable functions")
+    ax.set_title("Quality based on number of evaluations for RM-MEDA algorithm on separable functions")
     ax.set_xlabel("Number of evaluations")
     ax.set_ylabel("Quality")
     ax.set_xscale("log")
     ax.set_yscale("log")
     ax.plot(ecdf.x, ecdf.y, label="ECDF")
     plt.show()
+
 
 if __name__ == "__main__":
     main()
