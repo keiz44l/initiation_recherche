@@ -13,9 +13,9 @@ for k in range(len(instancesNbr)):
     for j in range(len(instancesD)):
         
         type = instancesType[k]
-        name = "Borg Adaptative"
-        picName = "borg"
-        dirName = "Borg"
+        name = "Random-Search5"
+        picName = "rs5"
+        dirName = "RANDOM-SEARCH5"
         
         instances = []
         instance = {}
