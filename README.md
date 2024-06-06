@@ -9,7 +9,7 @@ La plupart du code a été réalisé sous forme de Jupyter Notebook, et une part
 
 ## Introduction
 
-Ce projet a pour objectif de comparer les performances de différents modèles et algorithmes d'intelligence artificielle sur des 10 fonctions séparées en 5 classes. Les classes sont les suivantes :
+Ce projet a pour objectif de comparer les performances de différents modèles et algorithmes d'intelligence artificielle sur 10 fonctions séparées en 5 classes. Les classes sont les suivantes :
 - Fonctions séparables
 - Fonctions à conditionnement faible ou modéré
 - Fonctions à conditionnement fort et unimodales
