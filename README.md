@@ -16,7 +16,7 @@ Ce projet a pour objectif de comparer les performances de différents modèles e
 - Fonctions multimodales avec structure globale
 - Fonctions multimodales avec structure globale faible
 
-## Arborecence et fichiers
+## Arborescence et fichiers
 
 - **Algorithmes** : Contient les algorithmes utilisés pour comparer les performances, les données tdata et une fonction globale permettant de sauvegarder en png les résultats obtenus dans les dossiers ECDF, Instances et Median.
 
