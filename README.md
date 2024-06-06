@@ -4,6 +4,7 @@
 ```bash	
 pip install numpy
 pip install matplotlib
+pip install statsmodels
 ```
 La plupart du code a été réalisé sous forme de Jupyter Notebook, et une partie a été réalisée en Python. La version de Python utilisée est la 3.10.5.
 
@@ -38,4 +39,23 @@ Les modèles et algorithmes suivants ont été utilisés pour comparer les perfo
 - Random Search 5 : Témoin de base
 - Borg Adaptative
 - RM-MEDA
+
+## Lien avec le rapport
+
+La partie **5. MÉTHODES UTILISÉES ET OBSERVATION** est liée à **Algorithmes/Borg/borg_f01.ipynb** et **Algorithmes/Borg/borg_instances.py**.\ pour la sauvegarde des résultats.\
+La partie **6. RESULTATS** est liée à \
+**Separable/separable.ipynb** \
+**Low or moderate conditioning/low_or_moderate_conditioning.ipynb** \
+**High conditioning and unimodal/high_conditioning_and_unimodal.ipynb** \
+**Multimodal with global structure/multimodal_with_global_structure.ipynb** \
+**Multimodal with weak global structure/multimodal_with_weak_global_structure.ipynb** \
+pour l'analyse des résultats.\
+Les tables sont sous forme de dictionnaires avec les différents seuils et les valeurs, et les graphiques sont sous forme d'images dans les dossiers Pictures.
+
+## Auteurs
+- **Leflaëc Pierre**
+- **Tétart Julian**
+
+## License
+Ce projet est sous licence MIT - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations.
 

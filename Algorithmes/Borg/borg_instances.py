@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 from statsmodels.distributions.empirical_distribution import ECDF
 import numpy as np
 
+# Borg instances : Génération des graphiques pour les instances de Borg ( Non utilisé dans le rapport )
+
 instancesNbr = ["01","11","20","28","35","41","46","50","53","55"]
 instancesType = ["sphere/sphere","ellipsoide separable/ellipsoide separable","attractive sector/attractive sector",
                  "rosenbrock original/rosenbrock original","sharp ridge/sharp ridge","sum of different powers/sum of different powers",
